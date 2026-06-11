@@ -1,4 +1,19 @@
 {% extends 'base.html' %}
+{% block title %}
+{{ noticia.titulo }}
+{% endblock %}
+{% block meta %}
+
+<meta property="og:title"
+      content="{{ noticia.titulo }}">
+
+<meta property="og:description"
+      content="{{ noticia.subtitulo }}">
+
+<meta property="og:type"
+      content="article">
+
+{% endblock %}
 
 {% block content %}
 
@@ -43,6 +58,22 @@ class="imagem-noticia">
     </div>
 
     <hr>
+
+<hr>
+
+<div class="compartilhar">
+
+    <strong>Compartilhar:</strong>
+
+    <a
+    href="https://wa.me/?text={{ request.url }}"
+    target="_blank">
+
+    📱 WhatsApp
+
+    </a>
+
+</div>
 
     <a href="/">← Voltar para Home</a>
 
