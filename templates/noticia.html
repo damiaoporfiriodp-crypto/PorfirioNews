@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<article class="noticia-completa">
+
+    <h1>{{ noticia.titulo }}</h1>
+
+    {% if noticia.subtitulo %}
+    <h3>{{ noticia.subtitulo }}</h3>
+    {% endif %}
+
+{% if noticia.imagem %}
+
+<img
+src="{{ url_for('static', filename='uploads/' + noticia.imagem) }}"
+class="imagem-noticia">
+
+{% endif %}
+
+    <div class="meta">
+
+        <span><strong>Autor:</strong> {{ noticia.autor }}</span>
+
+        |
+
+        <span><strong>Categoria:</strong> {{ noticia.categoria }}</span>
+
+        |
+
+        <span>
+            {{ noticia.data_publicacao.strftime('%d/%m/%Y') }}
+        </span>
+
+    </div>
+
+    <hr>
+
+    <div class="conteudo">
+
+        {{ noticia.conteudo|replace('\n','<br>')|safe }}
+
+    </div>
+
+    <hr>
+
+    <a href="/">← Voltar para Home</a>
+
+</article>
+
+{% endblock %}

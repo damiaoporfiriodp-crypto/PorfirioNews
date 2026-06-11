@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PorfírioNews</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        PORFÍRIONEWS
+    </div>
+
+    <nav>
+
+        <a href="/">HOME</a>
+        <a href="/categoria/TAVARES">TAVARES</a>
+        <a href="/categoria/REGIÃO">REGIÃO</a>
+        <a href="/categoria/POLÍTICA">POLÍTICA</a>
+        <a href="/categoria/CULTURA">CULTURA</a>
+        <a href="/categoria/OPINIÃO">OPINIÃO</a>
+
+    </nav>
+     
+    <form action="/buscar" method="GET">
+
+        <input
+            type="text"
+            name="q"
+            placeholder="Buscar notícias...">
+
+        <button type="submit">
+            Buscar
+        </button>
+
+    </form>
+
+    </header>
+
+<main>
+
+{% block content %}
+{% endblock %}
+
+</main>
+
+</body>
+</html>

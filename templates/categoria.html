@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{ categoria }}</h1>
+
+<hr>
+
+{% for noticia in noticias %}
+
+<div class="card-noticia">
+
+    {% if noticia.imagem %}
+
+    <img
+        src="{{ url_for('static', filename='uploads/' + noticia.imagem) }}"
+        class="imagem-card">
+
+    {% endif %}
+
+    <h2>
+        <a href="/noticia/{{ noticia.slug }}">
+            {{ noticia.titulo }}
+        </a>
+    </h2>
+
+    <p>
+        {{ noticia.subtitulo }}
+    </p>
+
+</div>
+
+{% else %}
+
+<p>Nenhuma notícia encontrada nesta categoria.</p>
+
+{% endfor %}
+
+{% endblock %}

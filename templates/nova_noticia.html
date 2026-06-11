@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Nova Notícia</title>
+</head>
+<body>
+
+<h1>Nova Notícia</h1>
+
+<form method="POST" enctype="multipart/form-data">
+
+    <label>Título</label>
+    <br>
+
+    <input
+        type="text"
+        name="titulo"
+        style="width:600px;"
+        required>
+
+    <br><br>
+
+    <label>Subtítulo</label>
+    <br>
+
+    <input
+        type="text"
+        name="subtitulo"
+        style="width:600px;">
+
+    <br><br>
+
+    <label>Categoria</label>
+    <br>
+
+    <select name="categoria" style="width:300px;" required>
+        <option value="">Selecione uma categoria</option>
+        <option value="TAVARES">TAVARES</option>
+
+        <option value="REGIÃO">REGIÃO</option>
+
+        <option value="POLÍTICA">POLÍTICA</option>
+
+        <option value="CULTURA">CULTURA</option>
+
+        <option value="OPINIÃO">OPINIÃO</option>
+    </select>
+
+    <br><br>
+
+    <label>Autor</label>
+    <br>
+
+    <input
+        type="text"
+        name="autor"
+        value="Porfírio">
+
+    <br><br>
+
+    <label>Conteúdo</label>
+    <br>
+
+    <textarea
+        name="conteudo"
+        rows="15"
+        cols="100"
+        required></textarea>
+
+    <br><br>
+
+<label>Imagem</label>
+
+<br>
+
+<input
+    type="file"
+    name="imagem">
+
+<br><br>
+
+    <button type="submit">
+        Publicar
+    </button>
+
+</form>
+
+<br>
+
+<a href="/admin/dashboard">
+    Voltar ao painel
+</a>
+
+</body>
+</html>

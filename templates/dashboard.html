@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="dashboard">
+
+<h1>Painel Administrativo</h1>
+
+<hr>
+
+<div class="cards-dashboard">
+
+    <div class="card-dashboard">
+        <h2>{{ total_noticias }}</h2>
+        <p>Notícias Publicadas</p>
+    </div>
+
+    <div class="card-dashboard">
+        <h2>{{ noticias_com_imagem }}</h2>
+        <p>Notícias com Imagem</p>
+    </div>
+
+    <div class="card-dashboard">
+        <h2>{{ categorias }}</h2>
+        <p>Categorias Utilizadas</p>
+    </div>
+
+</div>
+
+<hr>
+
+<a class="botao-dashboard" href="/admin/nova-noticia">
+    ➕ Nova Notícia
+</a>
+<a class="botao-dashboard" href="/admin/noticias">
+    📰 Gerenciar Notícias
+</a>
+
+<a class="botao-dashboard" href="/">
+    🌐 Ver Portal
+</a>
+
+<a class="botao-dashboard" href="/logout">
+    🚪 Sair
+</a>
+
+</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if noticias %}
+
+<div class="manchete-principal">
+
+    <span class="tag">DESTAQUE</span>
+
+    {% if noticias[0].imagem %}
+
+    <img
+        src="{{ url_for('static', filename='uploads/' + noticias[0].imagem) }}"
+        class="imagem-manchete">
+
+    {% endif %}
+
+    <h1>
+        <a href="/noticia/{{ noticias[0].slug }}">
+            {{ noticias[0].titulo }}
+        </a>
+    </h1>
+
+    <p>
+        {{ noticias[0].subtitulo }}
+    </p>
+
+</div>
+
+{% endif %}
+
+<div class="grid-noticias">
+
+{% for noticia in noticias[1:] %}
+
+    <div class="card-noticia">
+
+        <a href="/categoria/{{ noticia.categoria }}">
+            TESTE {{ noticia.categoria }}
+        </a>
+
+        {% if noticia.imagem %}
+
+        <img
+            src="{{ url_for('static', filename='uploads/' + noticia.imagem) }}"
+            class="imagem-card">
+
+        {% endif %}
+
+        <h2>
+            <a href="/noticia/{{ noticia.slug }}">
+                {{ noticia.titulo }}
+            </a>
+        </h2>
+
+        <p>
+            {{ noticia.subtitulo }}
+        </p>
+
+    </div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

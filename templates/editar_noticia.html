@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Editar Notícia</title>
+
+<style>
+
+body{
+    font-family:Arial, sans-serif;
+    margin:30px;
+}
+
+input, textarea{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+}
+
+button{
+    padding:10px 20px;
+    margin-top:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Editar Notícia</h1>
+
+<form method="POST">
+
+<label>Título</label>
+
+<input
+type="text"
+name="titulo"
+value="{{ noticia.titulo }}"
+required>
+
+<br><br>
+
+<label>Subtítulo</label>
+
+<input
+type="text"
+name="subtitulo"
+value="{{ noticia.subtitulo }}">
+
+<br><br>
+
+ <label>Categoria</label>
+
+<select name="categoria">
+
+    <option value="TAVARES"
+        {% if noticia.categoria == "TAVARES" %}selected{% endif %}>
+        TAVARES
+    </option>
+
+    <option value="REGIÃO"
+        {% if noticia.categoria == "REGIÃO" %}selected{% endif %}>
+        REGIÃO
+    </option>
+
+    <option value="POLÍTICA"
+        {% if noticia.categoria == "POLÍTICA" %}selected{% endif %}>
+        POLÍTICA
+    </option>
+
+    <option value="CULTURA"
+        {% if noticia.categoria == "CULTURA" %}selected{% endif %}>
+        CULTURA
+    </option>
+
+    <option value="OPINIÃO"
+        {% if noticia.categoria == "OPINIÃO" %}selected{% endif %}>
+        OPINIÃO
+    </option>
+
+    <option value="POLÍCIA"
+        {% if noticia.categoria == "POLÍCIA" %}selected{% endif %}>
+        Polícia
+    </option>
+
+    <option value="OPINIÃO"
+        {% if noticia.categoria == "OPINIÃO" %}selected{% endif %}>
+        OPINIÃO
+    </option>
+
+</select>
+
+<br><br>
+
+<label>Autor</label>
+
+<input
+type="text"
+name="autor"
+value="{{ noticia.autor }}">
+
+<br><br>
+
+<label>Conteúdo</label>
+
+<textarea
+name="conteudo"
+rows="15"
+required>{{ noticia.conteudo }}</textarea>
+
+<br>
+
+<button type="submit">
+Salvar Alterações
+</button>
+
+</form>
+
+<br>
+
+<a href="/admin/noticias">
+← Voltar
+</a>
+
+</body>
+</html>
