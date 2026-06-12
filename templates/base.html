@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#d90429">
     <meta charset="UTF-8">
+    <link rel="icon"
+      type="image/png"
+      href="{{ url_for('static', filename='img/logo.png') }}">
     <title>
     {% block title %}
     PorfírioNews
@@ -23,9 +26,17 @@
 
 <header>
 
-    <div class="logo">
-        PORFÍRIONEWS
-    </div>
+<div class="logo">
+
+    <a href="/">
+
+        <img
+        src="{{ url_for('static', filename='img/logo.png') }}"
+        alt="PorfírioNews">
+
+    </a>
+
+</div>
 
     <nav>
 
@@ -63,7 +74,10 @@
 
     <div class="rodape-conteudo">
 
-        <h3>PorfírioNews</h3>
+        <img
+        src="{{ url_for('static', filename='img/logo.png') }}"
+        alt="PorfírioNews"
+        class="logo-rodape">
 
         <p>
             Portal de notícias de Tavares, região e Paraíba.

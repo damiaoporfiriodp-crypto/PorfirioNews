@@ -18,11 +18,9 @@ header{
     justify-content:space-between;
     flex-wrap:wrap;
 }
-.logo{
-    font-size:40px;
-    font-weight:bold;
-    color:#d90429;
-    margin-right:40px;
+.logo img{
+    height:80px;
+    width:auto;
 }
 nav{
     display:flex;
@@ -263,6 +261,15 @@ header button{
     margin-bottom:10px;
 }
 
+.logo-rodape{
+    height:90px;
+    width:auto;
+    margin-bottom:15px;
+}
+
+.rodape p{
+    margin:5px 0;
+}
 .rodape p{
     margin:5px 0;
 }
