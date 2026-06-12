@@ -188,8 +188,10 @@ def nova_noticia():
 
         if arquivo and arquivo.filename:
 
+            arquivo_bytes = arquivo.read()
+
             upload = imagekit.upload_file(
-                file=arquivo,
+                file=arquivo_bytes,
                 file_name=secure_filename(
                     arquivo.filename
                 )
@@ -197,6 +199,7 @@ def nova_noticia():
 
             nome_imagem = upload.response_metadata.raw["url"]
 
+            
         noticia = Noticia(
             titulo=request.form["titulo"],
             subtitulo=request.form["subtitulo"],
