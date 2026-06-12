@@ -65,14 +65,19 @@ class="imagem-noticia">
 
     <strong>Compartilhar:</strong>
 
-    <a
-    href="https://wa.me/?text={{ request.url }}"
-    target="_blank">
-
-    📱 WhatsApp
-
+    <a href="https://wa.me/?text={{ request.url }}" target="_blank">
+        WhatsApp
     </a>
 
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.url }}" target="_blank">
+        Facebook
+    </a>
+
+    <a href="https://t.me/share/url?url={{ request.url }}" target="_blank">
+        Telegram
+    </a>
+
+</div>
 </div>
 
     <a href="/">← Voltar para Home</a>

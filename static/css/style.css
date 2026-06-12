@@ -22,20 +22,19 @@ header{
     font-size:40px;
     font-weight:bold;
     color:#d90429;
+    margin-right:40px;
 }
-
 nav{
     display:flex;
     align-items:center;
-    gap:20px;
-}
+    flex:1;
 nav a{
     color:white;
     text-decoration:none;
-    margin-right:25px;
+    margin-right:20px;
     font-weight:bold;
+    font-size:14px;
 }
-
 nav a:hover{
     color:#d90429;
 }
@@ -180,17 +179,23 @@ main{
 header form{
     display:flex;
     gap:5px;
+    margin-left:auto;
 }
+
 header input{
     padding:10px;
-    width:300px;
+    width:220px;
+    border:none;
 }
 
 header button{
     padding:10px 15px;
     cursor:pointer;
+    border:none;
+    background:#d90429;
+    color:white;
+    font-weight:bold;
 }
-
 .dashboard{
     max-width:1000px;
     margin:40px auto;
@@ -242,4 +247,32 @@ header button{
     text-decoration:none;
     padding:10px 15px;
     border-radius:5px;
+}
+
+.rodape{
+    background:#111;
+    color:#fff;
+    margin-top:60px;
+    padding:40px;
+    text-align:center;
+}
+
+.rodape h3{
+    color:#d90429;
+    margin-bottom:10px;
+}
+
+.rodape p{
+    margin:5px 0;
+}
+
+.card-noticia{
+    border:1px solid #e5e5e5;
+    padding:15px;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.card-noticia:hover{
+    transform:translateY(-3px);
 }
