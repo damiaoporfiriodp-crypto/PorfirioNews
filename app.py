@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, redirect, session
 from werkzeug.utils import secure_filename
-from config import Config
 from models import db, Noticia
-
 import os
 from werkzeug.utils import secure_filename
+from config import Config
+from imagekitio import ImageKit
 
 import re
 import unicodedata
@@ -40,6 +40,11 @@ UPLOAD_FOLDER = "static/uploads"
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 app.config.from_object(Config)
+imagekit = ImageKit(
+    private_key=os.getenv("IMAGEKIT_PRIVATE_KEY"),
+    public_key=os.getenv("IMAGEKIT_PUBLIC_KEY"),
+    url_endpoint=os.getenv("IMAGEKIT_URL_ENDPOINT")
+)
 
 db.init_app(app)
 
@@ -183,16 +188,14 @@ def nova_noticia():
 
         if arquivo and arquivo.filename:
 
-            nome_imagem = secure_filename(
-                arquivo.filename
+            upload = imagekit.upload_file(
+                file=arquivo,
+                file_name=secure_filename(
+                    arquivo.filename
+                )
             )
 
-            caminho = os.path.join(
-                app.config["UPLOAD_FOLDER"],
-                nome_imagem
-            )
-
-            arquivo.save(caminho)
+            nome_imagem = upload.response_metadata.raw["url"]
 
         noticia = Noticia(
             titulo=request.form["titulo"],
