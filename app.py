@@ -197,6 +197,9 @@ def nova_noticia():
                 )
             )
 
+            print("UPLOAD IMAGEKIT:")
+            print(upload)
+
             nome_imagem = upload.response_metadata.raw["url"]
 
         noticia = Noticia(
