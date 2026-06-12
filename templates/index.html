@@ -11,7 +11,7 @@
     {% if noticias[0].imagem %}
 
     <img
-        src="{{ url_for('static', filename='uploads/' + noticias[0].imagem) }}"
+        src="{{ noticias[0].imagem }}"
         class="imagem-manchete">
 
     {% endif %}
@@ -43,7 +43,7 @@
         {% if noticia.imagem %}
 
         <img
-            src="{{ url_for('static', filename='uploads/' + noticia.imagem) }}"
+            src="{{ noticia.imagem }}"
             class="imagem-card">
 
         {% endif %}

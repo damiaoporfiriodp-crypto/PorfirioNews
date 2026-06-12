@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, session
-
+from werkzeug.utils import secure_filename
 from config import Config
 from models import db, Noticia
 

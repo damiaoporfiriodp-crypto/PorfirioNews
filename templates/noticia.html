@@ -28,7 +28,8 @@
 {% if noticia.imagem %}
 
 <img
-src="{{ url_for('static', filename='uploads/' + noticia.imagem) }}"
+<img
+src="{{ noticia.imagem }}"
 class="imagem-noticia">
 
 {% endif %}
@@ -77,7 +78,6 @@ class="imagem-noticia">
         Telegram
     </a>
 
-</div>
 </div>
 
     <a href="/">← Voltar para Home</a>
