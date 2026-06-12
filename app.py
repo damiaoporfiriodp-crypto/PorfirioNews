@@ -186,18 +186,16 @@ def nova_noticia():
 
         nome_imagem = None
 
-        if arquivo and arquivo.filename:
+    if arquivo and arquivo.filename:
 
-            arquivo_bytes = arquivo.read()
-
-            upload = imagekit.upload_file(
-                file=arquivo_bytes,
-                file_name=secure_filename(
-                    arquivo.filename
-                )
+        upload = imagekit.upload_file(
+            file=arquivo,
+            file_name=secure_filename(
+                arquivo.filename
             )
+        )
 
-            nome_imagem = upload.response_metadata.raw["url"]
+        nome_imagem = upload.response_metadata.raw["url"]
 
             
         noticia = Noticia(
