@@ -5,9 +5,9 @@ import os
 from werkzeug.utils import secure_filename
 from config import Config
 from imagekitio import ImageKit
-
 import re
 import unicodedata
+import base64
 
 def gerar_slug(texto):
 
@@ -190,15 +190,16 @@ def nova_noticia():
 
             arquivo_bytes = arquivo.read()
 
+            arquivo_base64 = base64.b64encode(
+                arquivo_bytes
+            ).decode("utf-8")
+
             upload = imagekit.upload_file(
-                file=arquivo_bytes,
+                file=arquivo_base64,
                 file_name=secure_filename(
                     arquivo.filename
                 )
             )
-
-            print("UPLOAD IMAGEKIT:")
-            print(upload)
 
             nome_imagem = upload.response_metadata.raw["url"]
 
