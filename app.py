@@ -171,50 +171,50 @@ def dashboard():
 # NOVA NOTÍCIA
 # ==========================
 @app.route("/admin/nova-noticia", methods=["GET", "POST"])
-    def nova_noticia():
+def nova_noticia():
 
-        if not session.get("logado"):
-            return redirect("/admin")
+    if not session.get("logado"):
+        return redirect("/admin")
 
-        if request.method == "POST":
+    if request.method == "POST":
 
-            slug = gerar_slug(
-                request.form["titulo"]
-            )
+        slug = gerar_slug(
+            request.form["titulo"]
+        )
 
-            arquivo = request.files.get("imagem")
+        arquivo = request.files.get("imagem")
 
-            nome_imagem = None
+        nome_imagem = None
 
-            if arquivo and arquivo.filename:
+        if arquivo and arquivo.filename:
 
-                arquivo_bytes = arquivo.read()
+            arquivo_bytes = arquivo.read()
 
-                upload = imagekit.upload_file(
-                    file=arquivo_bytes,
-                    file_name=secure_filename(
-                        arquivo.filename
-                    )
+            upload = imagekit.upload_file(
+                file=arquivo_bytes,
+                file_name=secure_filename(
+                    arquivo.filename
                 )
-
-                nome_imagem = upload.response_metadata.raw["url"]
-
-            noticia = Noticia(
-                titulo=request.form["titulo"],
-                subtitulo=request.form["subtitulo"],
-                categoria=request.form["categoria"],
-                autor=request.form["autor"],
-                conteudo=request.form["conteudo"],
-                imagem=nome_imagem,
-                slug=slug
             )
 
-            db.session.add(noticia)
-            db.session.commit()
+            nome_imagem = upload.response_metadata.raw["url"]
 
-            return redirect("/")
+        noticia = Noticia(
+            titulo=request.form["titulo"],
+            subtitulo=request.form["subtitulo"],
+            categoria=request.form["categoria"],
+            autor=request.form["autor"],
+            conteudo=request.form["conteudo"],
+            imagem=nome_imagem,
+            slug=slug
+        )
 
-        return render_template("nova_noticia.html")
+        db.session.add(noticia)
+        db.session.commit()
+
+        return redirect("/")
+
+    return render_template("nova_noticia.html")
 @app.route("/admin/noticias")
 def listar_noticias():
 
