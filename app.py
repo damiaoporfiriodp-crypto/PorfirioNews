@@ -1,4 +1,12 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import (
+    Flask, 
+    render_template,
+    request, 
+    redirect, 
+    session,
+    Response
+)
+
 from werkzeug.utils import secure_filename
 from models import db, Noticia
 import os
@@ -342,7 +350,6 @@ def sitemap():
         "\n".join(xml),
         mimetype="application/xml"
     )
-
 @app.route("/google12f388f4bff878ae.html")
 def google_verify():
     return app.send_static_file(
