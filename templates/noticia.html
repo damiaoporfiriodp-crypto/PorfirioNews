@@ -13,6 +13,16 @@
 <meta property="og:type"
       content="article">
 
+<meta property="og:url"
+      content="{{ request.url }}">
+
+{% if noticia.imagem %}
+<meta property="og:image"
+      content="{{ noticia.imagem }}">
+<meta property="og:image:secure_url"
+      content="{{ noticia.imagem }}">
+{% endif %}
+
 {% endblock %}
 
 {% block content %}
