@@ -10,10 +10,10 @@
 
 <p>{{ video.descricao }}</p>
 
-{% set video_id = video.youtube_url.replace('https://youtu.be/', '') %}
-
 {% if 'watch?v=' in video.youtube_url %}
-    {% set video_id = video.youtube_url.split('watch?v=')[-1] %}
+    {% set video_id = video.youtube_url.split('watch?v=')[-1].split('&')[0] %}
+{% else %}
+    {% set video_id = video.youtube_url.replace('https://youtu.be/', '') %}
 {% endif %}
 
 <iframe
