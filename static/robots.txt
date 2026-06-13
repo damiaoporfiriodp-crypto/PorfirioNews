@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://porfirionews.com.br/sitemap.xml
+
+@app.route("/robots.txt")
+def robots():
+    return app.send_static_file("robots.txt")

@@ -4,6 +4,7 @@ from models import db, Noticia
 import os
 from werkzeug.utils import secure_filename
 from config import Config
+from flask import Response
 from imagekitio import ImageKit
 import re
 import unicodedata
@@ -310,3 +311,40 @@ with app.app_context():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+@app.route("/sitemap.xml")
+def sitemap():
+
+    noticias = Noticia.query.all()
+
+    xml = ['<?xml version="1.0" encoding="UTF-8"?>']
+    xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
+
+    xml.append("""
+    <url>
+        <loc>https://porfirionews.com.br/</loc>
+    </url>
+    """)
+
+    for noticia in noticias:
+
+        xml.append(f"""
+        <url>
+            <loc>
+            https://porfirionews.com.br/noticia/{noticia.slug}
+            </loc>
+        </url>
+        """)
+
+    xml.append("</urlset>")
+
+    return Response(
+        "\n".join(xml),
+        mimetype="application/xml"
+    )
+
+@app.route("/google12f388f4bff878ae.html")
+def google_verify():
+    return app.send_static_file(
+        "google12f388f4bff878ae.html"
+    )
