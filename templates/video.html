@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ video.titulo }}
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ video.titulo }}</h1>
+
+<p>{{ video.descricao }}</p>
+
+{% set video_id = video.youtube_url.replace('https://youtu.be/', '') %}
+
+{% if 'watch?v=' in video.youtube_url %}
+    {% set video_id = video.youtube_url.split('watch?v=')[-1] %}
+{% endif %}
+
+<iframe
+    width="100%"
+    height="500"
+    src="https://www.youtube.com/embed/{{ video_id }}"
+    title="{{ video.titulo }}"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+</iframe>
+
+{% endblock %}

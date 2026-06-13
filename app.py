@@ -8,7 +8,7 @@ from flask import (
 )
 
 from werkzeug.utils import secure_filename
-from models import db, Noticia
+from models import db, Noticia, Video
 import os
 from werkzeug.utils import secure_filename
 from config import Config
@@ -101,6 +101,33 @@ def ver_categoria(categoria):
         "categoria.html",
         noticias=noticias,
         categoria=categoria
+    )
+
+@app.route("/opiniao")
+def opiniao():
+
+    videos = (
+        Video.query
+        .order_by(Video.data_publicacao.desc())
+        .all()
+    )
+
+    return render_template(
+        "opiniao.html",
+        videos=videos
+    )
+
+
+@app.route("/video/<slug>")
+def ver_video(slug):
+
+    video = Video.query.filter_by(
+        slug=slug
+    ).first_or_404()
+
+    return render_template(
+        "video.html",
+        video=video
     )
 
 @app.route("/buscar")
@@ -228,6 +255,34 @@ def nova_noticia():
         return redirect("/")
 
     return render_template("nova_noticia.html")
+@app.route("/admin/novo-video", methods=["GET", "POST"])
+def novo_video():
+
+    if not session.get("logado"):
+        return redirect("/admin")
+
+    if request.method == "POST":
+
+        slug = gerar_slug(
+            request.form["titulo"]
+        )
+
+        video = Video(
+            titulo=request.form["titulo"],
+            descricao=request.form["descricao"],
+            youtube_url=request.form["youtube_url"],
+            slug=slug
+        )
+
+        db.session.add(video)
+        db.session.commit()
+
+        return redirect("/admin/dashboard")
+
+    return render_template(
+        "novo_video.html"
+    )
+
 @app.route("/admin/noticias")
 def listar_noticias():
 

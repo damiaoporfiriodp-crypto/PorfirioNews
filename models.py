@@ -34,3 +34,32 @@ class Noticia(db.Model):
         db.String(255),
         unique=True
     )
+
+class Video(db.Model):
+    __tablename__ = "videos"
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    titulo = db.Column(
+        db.String(255),
+        nullable=False
+    )
+
+    descricao = db.Column(
+        db.Text
+    )
+
+    youtube_url = db.Column(
+        db.String(500),
+        nullable=False
+    )
+
+    slug = db.Column(
+        db.String(255),
+        unique=True
+    )
+
+    data_publicacao = db.Column(
+        db.DateTime,
+        default=datetime.utcnow
+    )

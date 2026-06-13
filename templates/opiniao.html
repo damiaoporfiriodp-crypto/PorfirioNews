@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+Opinião - PorfírioNews
+{% endblock %}
+
+{% block content %}
+
+<h1>Opinião</h1>
+
+{% for video in videos %}
+
+<div class="card-noticia">
+
+    <h2>{{ video.titulo }}</h2>
+
+    <p>{{ video.descricao }}</p>
+
+    <a href="/video/{{ video.slug }}">
+        Assistir vídeo
+    </a>
+
+</div>
+
+<hr>
+
+{% endfor %}
+
+{% endblock %}
