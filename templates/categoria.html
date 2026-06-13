@@ -13,7 +13,7 @@
     {% if noticia.imagem %}
 
     <img
-        src="{{ url_for('static', filename='uploads/' + noticia.imagem) }}"
+        src="{{ noticia.imagem }}"
         class="imagem-card">
 
     {% endif %}
